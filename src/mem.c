@@ -1,6 +1,8 @@
+#include "mem.h"
 #include "cart.h"
 
-bool cart_read(Cartridge* cart, char* filepath){
+
+bool mem_load_rom(Memory* mem, char* filepath){
     FILE *fp;
     size_t sz;
     errno_t error;
@@ -16,14 +18,15 @@ bool cart_read(Cartridge* cart, char* filepath){
     sz = ftell(fp);
     fseek(fp, 0L, SEEK_SET);
     
-    cart->rom_data = (uint8_t*)malloc(sz);
+    mem->rom_data = (uint8_t*)malloc(sz);
 
-    fread(cart->rom_data, sizeof(uint8_t), sz, fp);
+    fread(mem->rom_data, sizeof(uint8_t), sz, fp);
 
     return true;
 }
 
-void cart_print_info(Cartridge* cart){
+/*
+void mem_cart_print_info(Cartridge* cart){
 
     for(int i=0; i < 16; i++)
     {
@@ -31,9 +34,17 @@ void cart_print_info(Cartridge* cart){
     }
 
     printf("Title: %s", cart->title);
+}*/
+
+
+void mem_unload_rom(Memory* mem){
+    free(mem->rom_data);
 }
 
+void mem_read(Memory* mem, uint16_t addr){
 
-void cart_unload(Cartridge* cart){
-    free(cart->rom_data);
+}
+
+void mem_write(Memory* mem, uint16_t addr, uint8_t data){
+
 }

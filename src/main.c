@@ -5,11 +5,11 @@ static Gameboy gb = {0};
 int main(int argc, char** argv){
 
     // Read ROM and save to buffer
-    if( cart_read(&gb.cart, argv[1]) == false ){
+    if( mem_load_rom(&gb.mem, argv[1]) == false ){
         return 1;
     }
     
-    cart_print_info(&gb.cart);
+    //cart_print_info(&gb.cart);
 
     // Jump to $0100 when booting up 
     
@@ -18,7 +18,7 @@ int main(int argc, char** argv){
     // PC = PC + 1
     
     // Cleanup after ourselves
-    cart_unload(&gb.cart);
+    mem_unload_rom(&gb.mem);
 
     return 0;
 }

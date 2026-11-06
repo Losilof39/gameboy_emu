@@ -5,9 +5,9 @@ set(CMAKE_C_STANDARD 99)
 set(SOURCES
 src/main.c
 src/cpu.c
-src/cart.c
 src/emu.c
 src/instructions.c
+src/mem.c
 )
 
 add_executable(gameboy_emu ${SOURCES})
