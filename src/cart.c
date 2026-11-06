@@ -1,17 +1,13 @@
 #include "cart.h"
 
-uint8_t *rom_info;
-uint8_t *rom_buffer;
-char title[16];
-
-bool read_rom(char* filepath){
+bool cart_read(Cartridge* cart, char* filepath){
     FILE *fp;
     size_t sz;
     errno_t error;
-    
-    error = fopen_s(&fp, filepath, "r");
 
-    if( error == true ){
+    fp = fopen(filepath, "r");
+    
+    if( fp == NULL ){
         printf("Cannot open rom file: %s", filepath);
         return false;
     }
@@ -20,24 +16,24 @@ bool read_rom(char* filepath){
     sz = ftell(fp);
     fseek(fp, 0L, SEEK_SET);
     
-    rom_buffer = (uint8_t*)malloc(sz);
+    cart->rom_data = (uint8_t*)malloc(sz);
 
-    fread(rom_buffer, sizeof(uint8_t), sz, fp);
+    fread(cart->rom_data, sizeof(uint8_t), sz, fp);
 
     return true;
 }
 
-void print_rom_info(){
+void cart_print_info(Cartridge* cart){
 
     for(int i=0; i < 16; i++)
     {
-        title[i] = *(rom_buffer + i + 0x134);
+        cart->title[i] = *(cart->rom_data + i + 0x134);
     }
 
-    printf("Title: %s", title);
+    printf("Title: %s", cart->title);
 }
 
 
-void unload_rom(){
-    free(rom_buffer);
+void cart_unload(Cartridge* cart){
+    free(cart->rom_data);
 }

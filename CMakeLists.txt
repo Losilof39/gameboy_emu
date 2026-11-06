@@ -4,7 +4,7 @@ set(CMAKE_C_STANDARD 99)
 
 set(SOURCES
 src/main.c
-src/sm83.c
+src/cpu.c
 src/cart.c
 src/emu.c
 )

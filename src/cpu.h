@@ -1,5 +1,5 @@
-#ifndef SM83_H
-#define SM83_H
+#ifndef CPU_H 
+#define CPU_H
 
 #include <stdint.h>
 #include <stdbool.h>

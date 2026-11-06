@@ -24,11 +24,14 @@ typedef struct rom_info{
 }rom_info;
 */
 
+typedef struct Cartridge{
+    char title[16];
+    uint8_t *rom_data; 
+}Cartridge;
 
-bool read_rom(char* filepath);
-void read_info();
-void print_rom_info();
-void unload_rom();
+bool cart_read(Cartridge* cart, char* filepath);
+void cart_print_info(Cartridge* cart);
+void cart_unload(Cartridge* cart);
 
 
 #endif
