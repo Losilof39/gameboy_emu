@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-typedef struct reg{
+typedef struct Cpu{
     uint8_t a;
     uint8_t b;
     uint8_t c;
@@ -14,7 +14,9 @@ typedef struct reg{
     uint8_t l;
     bool z, n, hy, cy;
     uint16_t sp, pc;
-}reg; 
+}Cpu; 
 
+uint8_t execute(Cpu* cpu, uint8_t opcode);
+void cycle();
 
 #endif
