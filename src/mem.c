@@ -36,10 +36,16 @@ void mem_unload_rom(MEMORY* mem){
     free(mem->rom_data);
 }
 
-void mem_read(MEMORY* mem, uint16_t addr){
-
+uint8_t mem_read(GB* gb, uint16_t addr){
+    if (addr < gb->mem.rom_size)
+        return gb->mem.rom_data[addr];
+    else
+        return 0xaa;
 }
 
-void mem_write(MEMORY* mem, uint16_t addr, uint8_t data){
-
+void mem_write(GB* gb, uint16_t addr, uint8_t data){
+    struct mem_access *access = &gb->cpu.mem_accesses[gb->cpu.num_mem_accesses++];
+    access->type = MEM_ACCESS_WRITE;
+    access->addr = addr;
+    access->val = data;
 }

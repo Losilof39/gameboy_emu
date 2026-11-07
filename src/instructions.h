@@ -4,10 +4,10 @@
 #include "gb.h" 
 
 #define CODE_ADDR 0x150
-#define NUM_ISTR
+#define NUM_ISTR 256
 
 typedef struct instruction {
-    char* mnemonic;
+    const char* mnemonic;
     uint8_t length;
     uint8_t (*func)(GB* gb);
 } instruction;

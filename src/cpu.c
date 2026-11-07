@@ -1,20 +1,18 @@
+#include <stdio.h>
 #include "cpu.h"
 #include "instructions.h"
-#include <stdio.h>
+#include "mem.h"
 
-extern instruction instruction_set[NUM_ISTR];
+extern const instruction instruction_set[NUM_ISTR];
 
 // fetch next instruction and update the program counter (pc)
 uint8_t cpu_fetch(GB* gb)
 {
-    uint8_t* rom_data;
     uint8_t opcode;
 
-    rom_data = gb->mem.rom_data;
+    opcode = mem_read(gb, gb->cpu.PC);
 
-    opcode = rom_data[gb->cpu.pc];
-
-    gb->cpu.pc = gb->cpu.pc + 1;
+    gb->cpu.PC = gb->cpu.PC + 1;
 
     return opcode;
 }
@@ -27,11 +25,9 @@ uint8_t cpu_step(GB* gb){
     opcode = cpu_fetch(gb);
     istr = &instruction_set[opcode];
 
-    if( !istr->func(gb) ){
-        printf("Unimplemented opcode: %.4x\n", opcode);
-        gb->running = false;
+    if(!istr->func)
         return 0;
-    }
 
     return istr->func(gb);
+
 }

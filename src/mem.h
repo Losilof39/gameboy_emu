@@ -8,7 +8,7 @@
 bool mem_load_rom(MEMORY* mem, char* filepath);
 void mem_unload_rom(MEMORY* mem);
 
-void mem_read(MEMORY* mem, uint16_t addr);
-void mem_write(MEMORY* mem, uint16_t addr, uint8_t data);
+uint8_t mem_read(GB* gb, uint16_t addr);
+void mem_write(GB* gb, uint16_t addr, uint8_t data);
 
 #endif

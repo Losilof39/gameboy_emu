@@ -13,8 +13,15 @@ typedef struct CPU{
         struct {
             uint8_t F, A, C, B, E, D, L, H;
         }reg8;
-    }
+    };
+
     uint16_t SP, PC;
+
+    bool HLT, IME;
+
+    int num_mem_accesses;
+    struct mem_access mem_accesses[16];
+
 }CPU; 
 
 typedef struct MEMORY{
