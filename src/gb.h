@@ -28,6 +28,9 @@ typedef struct MEMORY{
 typedef struct GB{
     CPU cpu;
     MEMORY mem;
+
+    uint8_t total_cycles;
+    bool running;
 }GB;
 
 #endif

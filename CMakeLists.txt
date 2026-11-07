@@ -10,4 +10,6 @@ src/instructions.c
 src/mem.c
 )
 
+add_compile_options(-Wall -Wextra -Wpedantic)
+
 add_executable(gameboy_emu ${SOURCES})

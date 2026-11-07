@@ -1,6 +1,6 @@
 #include "instructions.h"
 
-instruction instruction_set[256] = {
+const instruction instruction_set[NUM_ISTR] = {
     {"NOP", 1, NOP},                    //0x00
     {"LD BC, nn", 3, LD_BC},            
     {"LD (BC), A", 0x02, LD_BC_A},

@@ -6,7 +6,6 @@ bool mem_load_rom(MEMORY* mem, char* filepath){
     FILE *fp;
     size_t sz;
     char title[16];
-    errno_t error;
 
     fp = fopen(filepath, "r");
     
@@ -28,7 +27,7 @@ bool mem_load_rom(MEMORY* mem, char* filepath){
         title[i] = *(mem->rom_data + i + 0x134);
     }
 
-    printf("ROM Title: %s", title);
+    printf("Title: %s", title);
 
     return true;
 }

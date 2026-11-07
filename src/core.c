@@ -1,22 +1,23 @@
+#include <stdio.h>
 #include "core.h"
 #include "cpu.h"
 #include "mem.h"
-#include "instructions.h"
-
 
 bool core_startup( GB* gb, char* fp){
 
     gb->cpu.a = 0x01;
-    gb->cpu.f = 0x00;
-    gb->cpu.b = 0xFF;
+    gb->cpu.f = 0xB0;
+    gb->cpu.b = 0x00;
     gb->cpu.c = 0x13;
     gb->cpu.d = 0x00;
-    gb->cpu.e = 0xC1;
-    gb->cpu.h = 0x84;
-    gb->cpu.l = 0x03;
+    gb->cpu.e = 0xD8;
+    gb->cpu.h = 0x01;
+    gb->cpu.l = 0x4D;
     gb->cpu.pc = 0x0150;
-    //gb->cpu.pc = 0x0150;  CHANGE BACK TO THIS AFTER TESTING THE CPU
+    //gb->cpu.pc = 0x0100;  CHANGE BACK TO THIS AFTER TESTING THE CPU
     gb->cpu.sp = 0xFFFE;
+
+    gb->running = true;
 
 
     // Read ROM and save to buffer
@@ -25,14 +26,12 @@ bool core_startup( GB* gb, char* fp){
 
 void core_mainloop( GB* gb){
 
-    while(1)
-    {
+    uint8_t cycles;
 
+    while(gb->running){
+        cycles = cpu_step(gb);
+        gb->total_cycles += cycles;
     }
-    // Jump to $0100 when booting up 
-    
-    // Iterate through every instructions
-    // Wait x amount of cycles based on the instruction
 
 }
 
