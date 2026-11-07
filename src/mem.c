@@ -1,10 +1,11 @@
+#include <stdlib.h> 
+#include <stdio.h> 
 #include "mem.h"
-#include "cart.h"
 
-
-bool mem_load_rom(Memory* mem, char* filepath){
+bool mem_load_rom(MEMORY* mem, char* filepath){
     FILE *fp;
     size_t sz;
+    char title[16];
     errno_t error;
 
     fp = fopen(filepath, "r");
@@ -21,30 +22,25 @@ bool mem_load_rom(Memory* mem, char* filepath){
     mem->rom_data = (uint8_t*)malloc(sz);
 
     fread(mem->rom_data, sizeof(uint8_t), sz, fp);
+    
+    for(int i=0; i < 16; i++)
+    {
+        title[i] = *(mem->rom_data + i + 0x134);
+    }
+
+    printf("ROM Title: %s", title);
 
     return true;
 }
 
-/*
-void mem_cart_print_info(Cartridge* cart){
-
-    for(int i=0; i < 16; i++)
-    {
-        cart->title[i] = *(cart->rom_data + i + 0x134);
-    }
-
-    printf("Title: %s", cart->title);
-}*/
-
-
-void mem_unload_rom(Memory* mem){
+void mem_unload_rom(MEMORY* mem){
     free(mem->rom_data);
 }
 
-void mem_read(Memory* mem, uint16_t addr){
+void mem_read(MEMORY* mem, uint16_t addr){
 
 }
 
-void mem_write(Memory* mem, uint16_t addr, uint8_t data){
+void mem_write(MEMORY* mem, uint16_t addr, uint8_t data){
 
 }

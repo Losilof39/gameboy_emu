@@ -20,82 +20,82 @@ instruction instruction_set[256] = {
 
 };
 
-uint8_t NOP()
+uint8_t NOP( GB* gb)
 {
     return 4;
 }
 
-uint8_t LD_BC()
+uint8_t LD_BC( GB* gb)
 {
     return 4;
 }
 
-uint8_t LD_BC_A()
+uint8_t LD_BC_A( GB* gb)
 {
     return 4;
 }
 
-uint8_t INC_BC()
+uint8_t INC_BC( GB* gb)
 {
     return 4;
 }
 
-uint8_t INC_B()
+uint8_t INC_B( GB* gb)
 {
     return 4;
 }
 
-uint8_t DEC_B()
+uint8_t DEC_B( GB* gb)
 {
     return 4;
 }
 
-uint8_t LD_B()
+uint8_t LD_B( GB* gb)
 {
     return 4;
 }
 
-uint8_t RLCA()
+uint8_t RLCA( GB* gb)
 {
     return 4;
 }
 
-uint8_t LD_SP()
+uint8_t LD_SP( GB* gb)
 {
     return 4;
 }
 
-uint8_t ADD_HL_BC()
+uint8_t ADD_HL_BC( GB* gb)
 {
     return 4;
 }
 
-uint8_t LD_A_BC()
+uint8_t LD_A_BC( GB* gb)
 {
     return 4;
 }
 
-uint8_t DEC_BC()
+uint8_t DEC_BC( GB* gb)
 {
     return 4;
 }
 
-uint8_t INC_C()
+uint8_t INC_C( GB* gb)
 {
     return 4;
 }
 
-uint8_t DEC_C()
+uint8_t DEC_C( GB* gb)
 {
     return 4;
 }
 
-uint8_t LD_C()
+uint8_t LD_C( GB* gb)
 {
     return 4;
 }
 
-uint8_t RRCA()
+uint8_t RRCA( GB* gb)
 {
     return 4;
 }

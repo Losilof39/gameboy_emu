@@ -1,6 +1,7 @@
 #include "gb.h"
+#include "mem.h"
 
-static Gameboy gb = {0};
+static GB gb = {0};
 
 int main(int argc, char** argv){
 
@@ -8,8 +9,6 @@ int main(int argc, char** argv){
     if( mem_load_rom(&gb.mem, argv[1]) == false ){
         return 1;
     }
-    
-    //cart_print_info(&gb.cart);
 
     // Jump to $0100 when booting up 
     

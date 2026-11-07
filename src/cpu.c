@@ -1,10 +1,12 @@
 #include "cpu.h"
 #include "instructions.h"
 
-uint8_t execute(Cpu* cpu, uint8_t opcode){
+
+uint8_t cpu_fetch(GB* gb)
+{
 
 }
 
-void cycle(Cpu* cpu){
+void cpu_step(GB* gb){
 
 }
