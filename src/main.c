@@ -1,23 +1,18 @@
 #include "gb.h"
-#include "mem.h"
+#include "core.h"
 
 static GB gb = {0};
 
 int main(int argc, char** argv){
-
-    // Read ROM and save to buffer
-    if( mem_load_rom(&gb.mem, argv[1]) == false ){
-        return 1;
-    }
-
-    // Jump to $0100 when booting up 
     
-    // Iterate through every instructions
-    // Wait x amount of cycles based on the instruction
-    // PC = PC + 1
+    if(core_startup(&gb, argv[1]) == false)
+        return 1;
+    
+    core_mainloop(&gb);
     
     // Cleanup after ourselves
-    mem_unload_rom(&gb.mem);
+    core_cleanup(&gb);
 
     return 0;
+
 }
