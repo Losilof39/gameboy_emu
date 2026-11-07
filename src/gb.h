@@ -5,15 +5,16 @@
 #include <stdbool.h>
 
 typedef struct CPU{
-    uint8_t a;
-    uint8_t b;
-    uint8_t c;
-    uint8_t d;
-    uint8_t e;
-    uint8_t h;
-    uint8_t l;
-    uint8_t f;
-    uint16_t sp, pc;
+    union {
+        struct {
+            uint16_t AF, BC, DE, HL;
+        }reg16;
+        
+        struct {
+            uint8_t F, A, C, B, E, D, L, H;
+        }reg8;
+    }
+    uint16_t SP, PC;
 }CPU; 
 
 typedef struct MEMORY{
