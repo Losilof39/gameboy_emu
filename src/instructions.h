@@ -3,6 +3,8 @@
 
 #include "gb.h" 
 
+#define CODE_ADDR 0x150
+
 typedef struct instruction {
     char* mnemonic;
     uint8_t length;

@@ -1,4 +1,3 @@
-#include "gb.h"
 #include "core.h"
 
 static GB gb = {0};

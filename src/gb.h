@@ -12,7 +12,7 @@ typedef struct CPU{
     uint8_t e;
     uint8_t h;
     uint8_t l;
-    bool z, n, hy, cy;
+    uint8_t f;
     uint16_t sp, pc;
 }CPU; 
 
